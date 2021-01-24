@@ -24,11 +24,18 @@ div {
 
 #player-selection {
     display: flex;
+    justify-content: space-around;
+    width: 100vw;
 }
 
+/*PLAYER SELECTION BUTTON*/
+
 .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
+    font-size: 15vw;
+    width: 20vw;
+    height: 20vw;  
+}
+
+.button:hover {
+    cursor: pointer;
 }
