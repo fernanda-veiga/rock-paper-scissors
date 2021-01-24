@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    justify-content: space-around;
+}
+
 div {
     border: solid black 2px;
 }
