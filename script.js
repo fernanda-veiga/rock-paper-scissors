@@ -36,16 +36,17 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let computerScore = 0;
     let playerScore = 0;
+
     for (let i=0; i<5; i++) {
-        playerSelection = playerPlay();
-        computerSelection = computerPlay();
-        result = playRound(playerSelection, computerSelection);
+        let result = playRound(playerPlay(), computerPlay());
 
         if (result == "You won") {
             playerScore = playerScore + 1;
-        } else if (result == "You lost") {
+        } 
+        else if (result == "You lost") {
             computerScore = computerScore + 1;
-        } else {
+        } 
+        else {
             playerScore = playerScore + 1;
             computerScore = computerScore + 1;
         }

@@ -6,10 +6,12 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     width: 100vw;
     height: 100vh;
+    background-color: #78F5E6;
 }
 
 #score {
@@ -18,4 +20,15 @@ body {
 
 div {
     border: solid black 2px;
+}
+
+#player-selection {
+    display: flex;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
 }
