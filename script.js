@@ -1,18 +1,22 @@
+const rock = document.getElementById("rock-btn")
+const paper = document.getElementById("paper-btn")
+const scissors = document.getElementById("scissors-btn")
+
+//EVENT LISTENER
+
+rock.addEventListener("click", computerPlay);
+paper.addEventListener("click", computerPlay);
+scissors.addEventListener("click", computerPlay);
+
 //FUNCTIONS
 
-function playerPlay() {
-    let playerSelection = window.prompt("Rock, paper or scissors?");
-    playerSelection = playerSelection.toLowerCase();
-    return playerSelection;
-}
-
+//Generates a random choice between rock, paper and scissors for the computer
 function computerPlay() {
     let rockPaperScissors = ["rock", "paper", "scissors"];
     computerSelection = rockPaperScissors[Math.floor(Math.random()*3)];
+    console.log(computerSelection);
     return computerSelection;
 }
-
-
 
 function playRound(playerSelection, computerSelection) {
 
@@ -38,6 +42,8 @@ function game() {
     let playerScore = 0;
 
     for (let i=0; i<5; i++) {
+
+
         let result = playRound(playerPlay(), computerPlay());
 
         if (result == "You won") {
