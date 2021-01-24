@@ -12,13 +12,15 @@ function computerPlay() {
     return computerSelection;
 }
 
-let gameDatabase = {
-    rock: {win: "scissors", lose: "paper"},
-    paper: {win: "rock", lose: "scissors"},
-    scissors: {win: "paper", lose: "rock"}
-};
+
 
 function playRound(playerSelection, computerSelection) {
+
+    let gameDatabase = {
+        rock: {win: "scissors", lose: "paper"},
+        paper: {win: "rock", lose: "scissors"},
+        scissors: {win: "paper", lose: "rock"}
+    };
 
     if (gameDatabase[playerSelection].won == computerSelection) {
         return "You won"; 
