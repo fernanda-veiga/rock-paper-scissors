@@ -9,6 +9,10 @@ body {
     justify-content: space-around;
 }
 
+#score {
+    display: flex;
+}
+
 div {
     border: solid black 2px;
 }
