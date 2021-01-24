@@ -12,32 +12,23 @@ function computerPlay() {
     return computerSelection;
 }
 
+let gameDatabase = {
+    rock: {win: "scissors", lose: "paper"},
+    paper: {win: "rock", lose: "scissors"},
+    scissors: {win: "paper", lose: "rock"}
+};
+
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection == "rock") {
-        if (computerSelection == "rock") {
-            return "It's a tie";
-        } else if (computerSelection == "paper") {
-            return "The computer won";
-        } else {
-            return "You won";
-        }
-    } else if (playerSelection == "paper") {
-        if (computerSelection == "rock") {
-            return "You won";
-        } else if (computerSelection == "paper") {
-            return "It's a tie";
-        } else {
-            return "The computer won";
-        }
-    } else if (playerSelection == "scissors") {
-        if (computerSelection == "rock") {
-            return "The computer won";
-        } else if (computerSelection == "paper") {
-            return "You won";
-        } else {
-            return "It's a tie";
-        }
-    } 
+
+    if (gameDatabase[playerSelection].won == computerSelection) {
+        return "You won"; 
+    }
+    else if (gameDatabase[playerSelection].lose == computerSelection) {
+        return "You lost"; 
+    }
+    else {
+        return "It's a tie";
+    }
 }
 
 function game() {
@@ -50,9 +41,9 @@ function game() {
 
         if (result == "You won") {
             playerScore = playerScore + 1;
-        } else if (result == "The computer won") {
+        } else if (result == "You lost") {
             computerScore = computerScore + 1;
-        } else (result == "It's a tie") {
+        } else {
             playerScore = playerScore + 1;
             computerScore = computerScore + 1;
         }
