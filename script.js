@@ -13,6 +13,8 @@ let playerPoints = 0;
 
 startGame();
 
+//FUNCTIONS
+
 function finishGame() {
     if (computerPoints == 5 && playerPoints == 5) {
         finalResult.innerHTML = "GAME OVER. It's a tie!";
@@ -41,12 +43,6 @@ function removeClick() {
     scissors.removeEventListener("click", function(){game("scissors")});
     return;
 }
-
-
-
-
-
-//FUNCTIONS
 
 //Calls the fucntions to play a round and to change the score and displays the final result
 
@@ -88,7 +84,6 @@ function changeScore(score, player) {
 function computerPlay() {
     let rockPaperScissors = ["rock", "paper", "scissors"];
     computerSelection = rockPaperScissors[Math.floor(Math.random()*3)];
-    console.log(computerSelection);
     return computerSelection;
 }
 
