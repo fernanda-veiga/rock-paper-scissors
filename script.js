@@ -15,6 +15,19 @@ startGame();
 
 //FUNCTIONS
 
+function startRock(){
+    game("rock");
+    return;
+}
+function startPaper(){
+    game("paper");
+    return;
+}
+function startScissors(){
+    game("scissors");
+    return;
+}
+
 function finishGame() {
     if (computerPoints == 5 && playerPoints == 5) {
         finalResult.innerHTML = "GAME OVER. It's a tie!";
@@ -31,16 +44,16 @@ function finishGame() {
 }
 
 function startGame() {
-    rock.addEventListener("click", function(){game("rock")});
-    paper.addEventListener("click", function(){game("paper")});
-    scissors.addEventListener("click", function(){game("scissors")});
+    rock.addEventListener("click", startRock);
+    paper.addEventListener("click", startPaper);
+    scissors.addEventListener("click", startScissors);
     return;
 }
 
 function removeClick() {
-    rock.removeEventListener("click", function(){game("rock")});
-    paper.removeEventListener("click", function(){game("paper")});
-    scissors.removeEventListener("click", function(){game("scissors")});
+    rock.removeEventListener("click", startRock);
+    paper.removeEventListener("click", startPaper);
+    scissors.removeEventListener("click", startScissors);
     return;
 }
 
