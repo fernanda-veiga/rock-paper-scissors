@@ -3,39 +3,42 @@ const paper = document.getElementById("paper-btn");
 const scissors = document.getElementById("scissors-btn");
 const computerScoreText = document.getElementById("computer-score");
 const playerScoreText = document.getElementById("player-score");
+const finalResult = document.getElementById("result");
 
 let computerPoints = 0;
 let playerPoints = 0;
-let result
+
 
 //EVENT LISTENERS
 
 rock.addEventListener("click", function(){
-    game("rock")
+    game("rock", playerPoints, computerPoints)
 });
 paper.addEventListener("click", function(){
-    game("paper")
+    game("paper", playerPoints, computerPoints)
 });
 scissors.addEventListener("click", function(){
-    game("scissors")
+    game("scissors", playerPoints, computerPoints)
 });
 
-console.log(computerScore);
-console.log(playerScore);
-
 function game(playerSelection) {
-    result = playRound(playerSelection, computerPlay());
+    
+    let result = playRound(playerSelection, computerPlay());
 
     if (result == "You won") {
-        playerScore = playerScore + 1;
+        playerPoints = changeScore(playerPoints, "player");
     } 
     else if (result == "You lost") {
-        computerScore = computerScore + 1;
+        computerPoints = changeScore(computerPoints, "computer");
     } 
     else {
-        playerScore = playerScore + 1;
-        computerScore = computerScore + 1;
+        playerPoints = changeScore(playerPoints, "player");
+        computerPoints = changeScore(computerPoints, "computer");
     }
+    finalResult.innerHTML = result;
+    console.log(computerPoints);
+    console.log(playerPoints);
+    return;
 }
 
 function changeScore(score, player) {
@@ -43,10 +46,10 @@ function changeScore(score, player) {
     if (player == "computer") {
         computerScoreText.innerHTML = "SCORE: " + score;
     }
-    else (player == "player") {
+    else {
         playerScoreText.innerHTML = "SCORE: " + score;
     }
-    return;
+    return score;
 }
 
 //FUNCTIONS
@@ -68,7 +71,7 @@ function playRound(playerSelection, computerSelection) {
         scissors: {win: "paper", lose: "rock"}
     };
 
-    if (gameDatabase[playerSelection].won == computerSelection) {
+    if (gameDatabase[playerSelection].win == computerSelection) {
         console.log("win");
         return "You won"; 
     }
@@ -81,4 +84,3 @@ function playRound(playerSelection, computerSelection) {
         return "It's a tie";
     }
 }
-
