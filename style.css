@@ -73,9 +73,9 @@ body {
 /*PLAYER SELECTION BUTTONS*/
 
 #player-selection {
-    display: flex;
-    justify-content: space-around;
-    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(3, 27vw);
+    grid-gap: 1vw;
 }
 
 .button {
@@ -83,8 +83,8 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 20vw;
-    width: 25vw;
-    height: 25vw;
+    width: 27vw;
+    height: 27vw;
     border: solid #023047 5px;
     background-color: #8ECAE6;
     border-radius: 8px;
