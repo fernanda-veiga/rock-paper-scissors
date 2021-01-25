@@ -90,9 +90,9 @@ function finishGame() {
 //Removes the event listeners
 
 function removeClick() {
-    rock.removeEventListener("click", startRock);
-    paper.removeEventListener("click", startPaper);
-    scissors.removeEventListener("click", startScissors);
+    rock.removeEventListener("click", buttonRock);
+    paper.removeEventListener("click", buttonPaper);
+    scissors.removeEventListener("click", buttonScissors);
     return;
 }
 
