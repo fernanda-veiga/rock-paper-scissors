@@ -4,29 +4,73 @@ const scissors = document.getElementById("scissors-btn");
 const computerScoreText = document.getElementById("computer-score");
 const playerScoreText = document.getElementById("player-score");
 const finalResult = document.getElementById("result");
+const computerSelectionImg = document.getElementById("computer-choice");
+const playerSelectionImg = document.getElementById("player-choice")
 
+let playerSelection = "";
+let computerSelection = "";
 let computerPoints = 0;
 let playerPoints = 0;
 
-
-//EVENT LISTENERS
-
 startGame();
 
-//FUNCTIONS
+//Buttons working
 
-function startRock(){
-    game("rock");
+function startGame() {
+    rock.addEventListener("click", buttonRock);
+    paper.addEventListener("click", buttonPaper);
+    scissors.addEventListener("click", buttonScissors);
     return;
 }
-function startPaper(){
-    game("paper");
+
+//Get player selection and run the game
+
+function buttonRock(){
+    playerSelection = "rock";
+    game(playerSelection);
     return;
 }
-function startScissors(){
-    game("scissors");
+function buttonPaper(){
+    playerSelection = "paper";
+    game(playerSelection);
     return;
 }
+function buttonScissors(){
+    playerSelection = "scissors";
+    game(playerSelection);
+    return;
+}
+
+//Play the game
+
+function game(playerSelection) {
+    //Store a value for the computer choice
+    computerSelection = computerPlay()
+
+    //Play a round
+    let result = playRound(playerSelection, computerSelection);
+    
+    //Display text according to the result
+    if (result == 1) {
+        playerPoints = changeScore(playerPoints, "player");
+        resultText = "You won!";
+    } 
+    else if (result == -1) {
+        computerPoints = changeScore(computerPoints, "computer");
+        resultText = "You lost!";
+    } 
+    else {
+        playerPoints = changeScore(playerPoints, "player");
+        computerPoints = changeScore(computerPoints, "computer");
+        resultText = "It's a tie!";
+    }
+    changeImage()
+    finalResult.innerHTML = resultText;
+    finishGame();
+    return;
+}
+
+//Checks if one of the players have 5 points and, if yes, the buttons stop working
 
 function finishGame() {
     if (computerPoints == 5 && playerPoints == 5) {
@@ -43,40 +87,12 @@ function finishGame() {
     }
 }
 
-function startGame() {
-    rock.addEventListener("click", startRock);
-    paper.addEventListener("click", startPaper);
-    scissors.addEventListener("click", startScissors);
-    return;
-}
+//Removes the event listeners
 
 function removeClick() {
     rock.removeEventListener("click", startRock);
     paper.removeEventListener("click", startPaper);
     scissors.removeEventListener("click", startScissors);
-    return;
-}
-
-//Calls the fucntions to play a round and to change the score and displays the final result
-
-function game(playerSelection) {
-    let result = playRound(playerSelection, computerPlay());
-
-    if (result == 1) {
-        playerPoints = changeScore(playerPoints, "player");
-        resultText = "You won!";
-    } 
-    else if (result == -1) {
-        computerPoints = changeScore(computerPoints, "computer");
-        resultText = "You lost!";
-    } 
-    else {
-        playerPoints = changeScore(playerPoints, "player");
-        computerPoints = changeScore(computerPoints, "computer");
-        resultText = "It's a tie!";
-    }
-    finalResult.innerHTML = resultText;
-    finishGame();
     return;
 }
 
@@ -117,4 +133,30 @@ function playRound(playerSelection, computerSelection) {
     else {
         return 0;
     }
+}
+
+//Displays an image of the current selection for the player and the computer
+
+function changeImage() {
+    //Change player selection image
+    if (playerSelection == "rock") {
+        playerSelectionImg.innerHTML = '<i class="far fa-hand-rock"></i>';
+    } 
+    else if (playerSelection == "paper") {
+        playerSelectionImg.innerHTML = '<i class="far fa-hand-paper"></i>';
+    } 
+    else {
+        playerSelectionImg.innerHTML = '<i class="far fa-hand-scissors"></i>';
+    } 
+
+    //Change computer selection image
+    if (computerSelection == "rock") {
+        computerSelectionImg.innerHTML = '<i class="far fa-hand-rock"></i>';
+    } 
+    else if (computerSelection == "paper") {
+        computerSelectionImg.innerHTML = '<i class="far fa-hand-paper"></i>';
+    } 
+    else {
+        computerSelectionImg.innerHTML = '<i class="far fa-hand-scissors"></i>';
+    } 
 }
